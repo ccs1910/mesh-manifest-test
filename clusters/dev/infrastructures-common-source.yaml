@@ -8,5 +8,5 @@ spec:
   interval: 10s
   ref:
     branch: main
-  url: https://github.com/ccs1910/mesh-manifest-test/tree/main/infrastructures/common
+  url: https://github.com/ccs1910/mesh-manifest-test/infrastructures/common
 
