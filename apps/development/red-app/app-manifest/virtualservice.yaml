@@ -42,7 +42,7 @@ spec:
       app: red
   listeners:
     - portMapping:
-        port: 5001
+        port: 80
         protocol: http
   serviceDiscovery:
     awsCloudMap:

@@ -26,18 +26,14 @@ spec:
         app: red
     spec:
       containers:
-      - name: red 
-        image: 450360193046.dkr.ecr.us-west-2.amazonaws.com/santosoc-red:stable
+      - image: public.ecr.aws/nginx/nginx:1.21
         imagePullPolicy: IfNotPresent
+        name: nginx-app
         ports:
           - name: http
-            containerPort: 5001
-            protocol: TCP
+            containerPort: 80
           - name: http-metrics
             containerPort: 9797
-            protocol: TCP
-          - name: grpc
-            containerPort: 9999
             protocol: TCP
         livenessProbe:
           httpGet:
