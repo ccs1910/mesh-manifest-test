@@ -1,0 +1,58 @@
+apiVersion: appmesh.k8s.aws/v1beta2
+kind: VirtualService
+metadata:
+  name: nginx
+  namespace: nginx
+spec:
+  awsName: nginx.santosoc.hosted.local
+  provider:
+    virtualRouter:
+      virtualRouterRef:
+        name: nginx-router
+---
+apiVersion: appmesh.k8s.aws/v1beta2
+kind: VirtualRouter
+metadata:
+  name: nginx-router
+  namespace: nginx
+spec:
+  listeners:
+    - portMapping:
+        port: 80
+        protocol: http
+  routes:
+    - name: route-to-nginx-app
+      httpRoute:
+        match:
+          prefix: /
+        action:
+          weightedTargets:
+            - virtualNodeRef:
+                name: nginx-app
+              weight: 1
+---
+apiVersion: appmesh.k8s.aws/v1beta2
+kind: VirtualNode
+metadata:
+  name: nginx-app
+  namespace: nginx
+spec:
+  podSelector:
+    matchLabels:
+      app: nginx-app
+  listeners:
+    - portMapping:
+        port: 80
+        protocol: http
+      healthCheck:
+        healthyThreshold: 2
+        intervalMillis: 5000
+        path: "/"
+        port: 80
+        protocol: "http"
+        timeoutMillis: 2000
+        unhealthyThreshold: 2
+  serviceDiscovery:
+    awsCloudMap:
+      namespaceName: santosoc.pvt.local
+      serviceName: nginx

@@ -1,0 +1,55 @@
+apiVersion: appmesh.k8s.aws/v1beta2
+kind: VirtualService
+metadata:
+  name: blue
+  namespace: blue
+spec:
+  awsName: blue.santosoc.hosted.local
+  provider:
+    virtualRouter:
+      virtualRouterRef:
+        name: blue-router
+---
+apiVersion: appmesh.k8s.aws/v1beta2
+kind: VirtualRouter
+metadata:
+  name: blue-router
+  namespace: blue
+spec:
+  listeners:
+    - portMapping:
+        port: 5001
+        protocol: http
+  routes:
+    - name: route-to-blue-app
+      httpRoute:
+        match:
+          prefix: /
+        action:
+          weightedTargets:
+            - virtualNodeRef:
+                name: blue-app
+              weight: 1
+---
+apiVersion: appmesh.k8s.aws/v1beta2
+kind: VirtualNode
+metadata:
+  name: blue-app
+  namespace: blue
+spec:
+  podSelector:
+    matchLabels:
+      app: blue-app
+  listeners:
+    - portMapping:
+        port: 5001
+        protocol: http
+  serviceDiscovery:
+    awsCloudMap:
+      namespaceName: santosoc.pvt.local
+      serviceName: blue
+  backends:
+    - virtualService:
+        virtualServiceRef:
+          namespace: red
+          name: "red"
