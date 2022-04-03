@@ -39,14 +39,6 @@ spec:
         - name: grpc
           containerPort: 9999
           protocol: TCP
-        livenessProbe:
-          httpGet:
-            path: /
-            port: http
-        readinessProbe:
-          httpGet:
-            path: /
-            port: http
         resources:
           limits:
             cpu: "100m"
