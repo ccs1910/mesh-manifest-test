@@ -40,15 +40,13 @@ spec:
             containerPort: 9999
             protocol: TCP
         livenessProbe:
-          exec:
-            command:
-            - curl
-            - http://localhost:5001
+          httpGet:
+            path: /
+            port: http
         readinessProbe:
-          exec:
-            command:
-            - curl
-            - http://localhost:5001
+          httpGet:
+            path: /
+            port: http
         resources:
           limits:
             cpu: "100m"
