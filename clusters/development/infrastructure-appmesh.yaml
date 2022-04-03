@@ -57,9 +57,9 @@ spec:
   healthChecks:
     - apiVersion: v1
       kind: Service
-      name: appmesh-gateway
+      name: ingress-gw
       namespace: appmesh-gateway
     - apiVersion: apps/v1
       kind: Deployment
-      name: appmesh-gateway
+      name: ingress-gw
       namespace: appmesh-gateway
