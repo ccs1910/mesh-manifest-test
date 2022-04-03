@@ -2,7 +2,7 @@
 apiVersion: appmesh.k8s.aws/v1beta2
 kind: GatewayRoute
 metadata:
-  name: gateway-route-eks
+  name: gateway-route-nginx
   namespace: nginx
 spec:
   httpRoute:

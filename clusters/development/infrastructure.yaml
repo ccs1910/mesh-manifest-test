@@ -58,8 +58,8 @@ spec:
     - apiVersion: v1
       kind: Service
       name: ingress-gateway
-      namespace: ingress-gateway
+      namespace: appmesh-gateway
     - apiVersion: apps/v1
       kind: Deployment
       name: ingress-gateway
-      namespace: ingress-gateway
+      namespace: appmesh-gateway

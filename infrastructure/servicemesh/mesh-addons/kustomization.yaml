@@ -4,7 +4,6 @@ resources:
   - https://github.com/fluxcd/flux2/manifests//monitoring/grafana?ref=main
   - flagger.yaml
   - prometheus.yaml
-  - gateway.yaml
 patchesStrategicMerge:
   - |
     apiVersion: v1
