@@ -3,13 +3,14 @@ kind: Kustomization
 resources:
   - namespace.yaml
   - app-manifest
-# vars:
-#   - name: NAMESPACE
-#     objref:
-#       kind: Namespace
-#       name: red
-#       apiVersion: v1
-#     fieldref:
-#       fieldpath: metadata.name
-# configurations:
-#   - kustomizeconfig.yaml
+  - load-tester
+vars:
+  - name: NAMESPACE
+    objref:
+      kind: Namespace
+      name: red
+      apiVersion: v1
+    fieldref:
+      fieldpath: metadata.name
+configurations:
+  - kustomizeconfig.yaml
