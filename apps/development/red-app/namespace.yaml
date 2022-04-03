@@ -5,3 +5,4 @@ metadata:
   labels: 
     mesh: santosoc-mesh
     appmesh.k8s.aws/sidecarInjectorWebhook: enabled
+    gateway: ingress-gw

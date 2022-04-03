@@ -1,0 +1,15 @@
+---
+apiVersion: appmesh.k8s.aws/v1beta2
+kind: GatewayRoute
+metadata:
+  name: gateway-route-eks
+  namespace: red
+spec:
+  httpRoute:
+    match:
+      prefix: "/red/"
+    action:
+      target:
+        virtualService:
+          virtualServiceRef:
+            name: red
