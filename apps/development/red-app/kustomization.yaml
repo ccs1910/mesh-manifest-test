@@ -4,5 +4,13 @@ resources:
   - namespace.yaml
   - load-tester
   - app-manifest
+vars:
+  - name: NAMESPACE
+    objref:
+      kind: Namespace
+      name: red
+      apiVersion: v1
+    fieldref:
+      fieldpath: metadata.name
 configurations:
   - kustomizeconfig.yaml
