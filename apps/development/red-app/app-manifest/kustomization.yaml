@@ -1,0 +1,13 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - fe-red-virtualnode.yaml
+  - namespace.yaml
+  - deployment.yaml
+  - gateway-route.yaml
+  - canary.yaml
+  - hpa.yaml
+images:
+  - name: 450360193046.dkr.ecr.us-west-2.amazonaws.com/santosoc-red
+    newName: 450360193046.dkr.ecr.us-west-2.amazonaws.com/santosoc-red
+    newTag: stable

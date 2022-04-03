@@ -7,27 +7,38 @@ metadata:
   namespace: red
 spec:
   replicas: 3
+  minReadySeconds: 3
+  revisionHistoryLimit: 5
+  progressDeadlineSeconds: 60
+  strategy:
+    rollingUpdate:
+      maxUnavailable: 0
+    type: RollingUpdate
   selector:
     matchLabels:
       app: red-app
-  # strategy:
-  #   rollingUpdate:
-  #     maxSurge: 25%
-  #     maxUnavailable: 25%
-  #   type: RollingUpdate
   template:
     metadata:
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "9797"
       labels:
         app: red-app
     spec:
       containers:
-      - image: 450360193046.dkr.ecr.us-west-2.amazonaws.com/santosoc-red:stable
-        imagePullPolicy: IfNotPresent
-        name: red-app
-        ports:
-          - name: http
-            containerPort: 5001
-            protocol: TCP
+        - name: red-app 
+          image: 450360193046.dkr.ecr.us-west-2.amazonaws.com/santosoc-red:stable
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 5001
+              protocol: TCP
+            - name: http-metrics
+              containerPort: 9797
+              protocol: TCP
+            - name: grpc
+              containerPort: 9999
+              protocol: TCP
         livenessProbe:
           httpGet:
             path: /
