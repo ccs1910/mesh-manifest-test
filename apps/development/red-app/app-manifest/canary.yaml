@@ -2,6 +2,7 @@ apiVersion: flagger.app/v1beta1
 kind: Canary
 metadata:
   name: red
+  namespace: red
 spec:
   # App Mesh API reference
   provider: appmesh:v1beta2
