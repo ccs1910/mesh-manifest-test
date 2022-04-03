@@ -8,7 +8,7 @@ spec:
   provider:
     virtualNode:
       virtualNodeRef:
-        name: red-app
+        name: red
 ---
 apiVersion: appmesh.k8s.aws/v1beta2
 kind: VirtualRouter
@@ -21,25 +21,25 @@ spec:
         port: 5001
         protocol: http
   routes:
-    - name: route-to-red-app
+    - name: route-to-red
       httpRoute:
         match:
           prefix: /
         action:
           weightedTargets:
             - virtualNodeRef:
-                name: red-app
+                name: red
               weight: 1
 ---
 apiVersion: appmesh.k8s.aws/v1beta2
 kind: VirtualNode
 metadata:
-  name: red-app
+  name: red
   namespace: red
 spec:
   podSelector:
     matchLabels:
-      app: red-app
+      app: red
   listeners:
     - portMapping:
         port: 5001

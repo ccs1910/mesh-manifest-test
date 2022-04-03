@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: red-app
+  name: red
   labels:
-    app: red-app
+    app: red
   namespace: red
 spec:
   replicas: 3
@@ -16,17 +16,17 @@ spec:
     type: RollingUpdate
   selector:
     matchLabels:
-      app: red-app
+      app: red
   template:
     metadata:
       annotations:
         prometheus.io/scrape: "true"
         prometheus.io/port: "9797"
       labels:
-        app: red-app
+        app: red
     spec:
       containers:
-      - name: red-app 
+      - name: red 
         image: 450360193046.dkr.ecr.us-west-2.amazonaws.com/santosoc-red:stable
         imagePullPolicy: IfNotPresent
         ports:
