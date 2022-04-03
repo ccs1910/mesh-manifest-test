@@ -4,3 +4,4 @@ resources:
   - fe-nginx-deployment.yaml
   - fe-nginx-virtualnode.yaml
   - namespace.yaml
+  - gateway-route.yaml

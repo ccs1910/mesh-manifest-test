@@ -4,3 +4,5 @@ resources:
   - fe-red-deployment.yaml
   - fe-red-virtualnode.yaml
   - namespace.yaml
+  - gateway-route.yaml
+  
