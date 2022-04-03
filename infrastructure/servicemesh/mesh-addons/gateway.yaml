@@ -55,18 +55,18 @@ spec:
     - portMapping:
         port: 8088
         protocol: http
----
-apiVersion: appmesh.k8s.aws/v1beta2
-kind: GatewayRoute
-metadata:
-  name: gateway-route-eks
-  namespace: nginx
-spec:
-  httpRoute:
-    match:
-      prefix: "/nginx/"
-    action:
-      target:
-        virtualService:
-          virtualServiceRef:
-            name: nginx
+# ---
+# apiVersion: appmesh.k8s.aws/v1beta2
+# kind: GatewayRoute
+# metadata:
+#   name: gateway-route-eks
+#   namespace: nginx
+# spec:
+#   httpRoute:
+#     match:
+#       prefix: "/nginx/"
+#     action:
+#       target:
+#         virtualService:
+#           virtualServiceRef:
+#             name: nginx
