@@ -44,7 +44,7 @@ metadata:
   name: mesh-addons
   namespace: flux-system
 spec:
-  interval: 30m
+  interval: 20s
   timeout: 1m
   dependsOn:
     - name: mesh
