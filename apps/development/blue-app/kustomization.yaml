@@ -1,6 +1,6 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - fe-red-deployment.yaml
-  - fe-red-virtualnode.yaml
+  - fe-blue-deployment.yaml
+  - fe-blue-virtualnode.yaml
   - namespace.yaml
