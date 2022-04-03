@@ -6,8 +6,9 @@ metadata:
 spec:
   awsName: red.santosoc.hosted.local
   provider:
-    virtualNodeRef:
-      name: red-app
+    virtualNode:
+      virtualNodeRef:
+        name: red-app
 ---
 apiVersion: appmesh.k8s.aws/v1beta2
 kind: VirtualRouter
