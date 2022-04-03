@@ -10,7 +10,7 @@ spec:
   targetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: red
+    name: red-app
   # HPA reference (optional)
   autoscalerRef:
     apiVersion: autoscaling/v2beta2
