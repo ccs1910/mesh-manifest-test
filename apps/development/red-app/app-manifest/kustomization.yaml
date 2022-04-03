@@ -5,6 +5,7 @@ resources:
   - deployment.yaml
   - hpa.yaml
   - gateway-route.yaml
+  - canary.yaml
 images:
   - name: 450360193046.dkr.ecr.us-west-2.amazonaws.com/santosoc-red
     newName: 450360193046.dkr.ecr.us-west-2.amazonaws.com/santosoc-red
