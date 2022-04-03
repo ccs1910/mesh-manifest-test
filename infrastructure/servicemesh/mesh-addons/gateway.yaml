@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: ingress-gw
+  name: ingress-gateway
   namespace: ingress-gateway
   annotations:
     # service.beta.kubernetes.io/aws-load-balancer-name: "ingress-external-lb"
@@ -15,23 +15,23 @@ spec:
       targetPort: 8088
       name: http
   selector:
-    app: ingress-gw
+    app: ingress-gateway
 
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ingress-gw
+  name: ingress-gateway
   namespace: ingress-gateway
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: ingress-gw
+      app: ingress-gateway
   template:
     metadata:
       labels:
-        app: ingress-gw
+        app: ingress-gateway
     spec:
       containers:
         - name: envoy
@@ -42,15 +42,15 @@ spec:
 apiVersion: appmesh.k8s.aws/v1beta2
 kind: VirtualGateway
 metadata:
-  name: ingress-gw
+  name: ingress-gateway
   namespace: ingress-gateway
 spec:
   namespaceSelector:
     matchLabels:
-      gateway: ingress-gw
+      gateway: ingress-gateway
   podSelector:
     matchLabels:
-      app: ingress-gw
+      app: ingress-gateway
   listeners:
     - portMapping:
         port: 8088
