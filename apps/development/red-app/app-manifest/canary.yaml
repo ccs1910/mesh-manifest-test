@@ -36,7 +36,7 @@ spec:
     rewrite:
       uri: /
     # App Mesh Cloud Map discovery (optional)
-    cloudMap:
+    awsCloudMap:
       serviceName: red
       serviceNamespace: santosoc.pvt.local
   # define the canary analysis timing and KPIs
