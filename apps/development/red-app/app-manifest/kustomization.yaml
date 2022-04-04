@@ -1,11 +1,10 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - canary.yaml
   - deployment.yaml
   - hpa.yaml
   - gateway-route.yaml
 images:
   - name: 450360193046.dkr.ecr.us-west-2.amazonaws.com/santosoc-red
     newName: 450360193046.dkr.ecr.us-west-2.amazonaws.com/santosoc-red
-    newTag: "2.0"
+    newTag: "1.0"
