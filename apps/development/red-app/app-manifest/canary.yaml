@@ -37,9 +37,9 @@ spec:
       uri: /
     meshName: santosoc-mesh
     # App Mesh Cloud Map discovery (optional)
-    cloudMap:
-      serviceName: red
-      serviceNamespace: santosoc.pvt.local
+    # cloudMap:
+    #   serviceName: red
+    #   serviceNamespace: santosoc.pvt.local
   # define the canary analysis timing and KPIs
   analysis:
     # schedule interval (default 60s)
