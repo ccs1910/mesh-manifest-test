@@ -1,40 +1,40 @@
-# apiVersion: appmesh.k8s.aws/v1beta2
-# kind: VirtualService
-# metadata:
-#   name: red
-#   namespace: red
-# spec:
-#   awsName: red.santosoc.hosted.local
-#   provider:
-#     virtualNode: 
-#       virtualNodeRef:
-#         name: red
-# ---
-# apiVersion: appmesh.k8s.aws/v1beta2
-# kind: VirtualRouter
-# metadata:
-#   name: red-router
-#   namespace: red
-# spec:
-#   listeners:
-#     - portMapping:
-#         port: 5001
-#         protocol: http
-#   routes:
-#     - name: route-to-red
-#       httpRoute:
-#         match:
-#           prefix: /
-#         action:
-#           weightedTargets:
-#             - virtualNodeRef:
-#                 name: red
-#               weight: 1
+apiVersion: appmesh.k8s.aws/v1beta2
+kind: VirtualService
+metadata:
+  name: red
+  namespace: red
+spec:
+  awsName: red.santosoc.hosted.local
+  provider:
+    virtualRouter: 
+      virtualRouterRef:
+        name: red-router
+---
+apiVersion: appmesh.k8s.aws/v1beta2
+kind: VirtualRouter
+metadata:
+  name: red-router
+  namespace: red
+spec:
+  listeners:
+    - portMapping:
+        port: 5001
+        protocol: http
+  routes:
+    - name: route-to-red
+      httpRoute:
+        match:
+          prefix: /
+        action:
+          weightedTargets:
+            - virtualNodeRef:
+                name: red
+              weight: 1
 ---
 apiVersion: appmesh.k8s.aws/v1beta2
 kind: VirtualNode
 metadata:
-  name: red-primary
+  name: red
   namespace: red
 spec:
   podSelector:
@@ -46,12 +46,12 @@ spec:
         protocol: http
       healthCheck:
         healthyThreshold: 2
-        intervalMillis: 5000
+        unhealthyThreshold: 2
         path: "/"
         port: 5001
         protocol: "http"
         timeoutMillis: 2000
-        unhealthyThreshold: 2
+        intervalMillis: 5000
   serviceDiscovery:
     awsCloudMap:
       namespaceName: santosoc.pvt.local
