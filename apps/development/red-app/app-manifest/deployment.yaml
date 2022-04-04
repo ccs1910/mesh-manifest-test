@@ -6,7 +6,7 @@ metadata:
     app: red
   namespace: red
 spec:
-  replicas: 2
+  minReadySeconds: 3
   selector:
     matchLabels:
       app: red
