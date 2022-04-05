@@ -7,35 +7,31 @@ metadata:
   namespace: blue
 spec:
   replicas: 3
+  minReadySeconds: 3
   selector:
     matchLabels:
       app: blue-app
-  # strategy:
-  #   rollingUpdate:
-  #     maxSurge: 25%
-  #     maxUnavailable: 25%
-  #   type: RollingUpdate
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
   template:
     metadata:
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "9797"
       labels:
         app: blue-app
     spec:
       containers:
-      - image: 450360193046.dkr.ecr.us-west-2.amazonaws.com/santosoc-blue:stable
+      - name: blue-app
+        image: 450360193046.dkr.ecr.us-west-2.amazonaws.com/santosoc-blue:stable
         imagePullPolicy: IfNotPresent
-        name: blue-app
         ports:
           - name: http
             containerPort: 5001
             protocol: TCP
-        livenessProbe:
-          httpGet:
-            path: /
-            port: http
-        readinessProbe:
-          httpGet:
-            path: /
-            port: http
         resources:
           limits:
             cpu: "100m"

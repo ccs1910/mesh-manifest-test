@@ -44,12 +44,15 @@ spec:
     - portMapping:
         port: 5001
         protocol: http
+      healthCheck:
+        healthyThreshold: 2
+        unhealthyThreshold: 2
+        path: "/"
+        port: 5001
+        protocol: "http"
+        timeoutMillis: 2000
+        intervalMillis: 5000
   serviceDiscovery:
     awsCloudMap:
       namespaceName: santosoc.pvt.local
       serviceName: blue
-  backends:
-    - virtualService:
-        virtualServiceRef:
-          namespace: red
-          name: "red"

@@ -56,3 +56,7 @@ spec:
     awsCloudMap:
       namespaceName: santosoc.pvt.local
       serviceName: red
+  backends:
+    - virtualService:
+        virtualServiceRef:
+          name: nginx      
