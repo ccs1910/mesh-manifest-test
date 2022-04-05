@@ -59,4 +59,7 @@ spec:
   backends:
     - virtualService:
         virtualServiceRef:
-          name: nginx      
+          name: nginx
+    - virtualService:
+        virtualServiceRef:
+          name: blue
