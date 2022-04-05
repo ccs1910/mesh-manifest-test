@@ -29,6 +29,9 @@ spec:
           weightedTargets:
             - virtualNodeRef:
                 name: blue-app
+              weight: 0
+            - virtualNodeRef:
+                name: blue-app2
               weight: 1
 ---
 apiVersion: appmesh.k8s.aws/v1beta2
@@ -56,3 +59,36 @@ spec:
     awsCloudMap:
       namespaceName: santosoc.pvt.local
       serviceName: blue
+---
+apiVersion: appmesh.k8s.aws/v1beta2
+kind: VirtualNode
+metadata:
+  name: blue-app2
+  namespace: blue
+spec:
+  podSelector:
+    matchLabels:
+      app: blue-app
+  listeners:
+    - portMapping:
+        port: 5001
+        protocol: http
+      healthCheck:
+        healthyThreshold: 2
+        unhealthyThreshold: 2
+        path: "/"
+        port: 5001
+        protocol: "http"
+        timeoutMillis: 2000
+        intervalMillis: 5000
+  serviceDiscovery:
+    awsCloudMap:
+      namespaceName: santosoc.pvt.local
+      serviceName: blue
+  backends:
+    - virtualService:
+        virtualServiceRef:
+          name: nginx
+    - virtualService:
+        virtualServiceRef:
+          name: red
