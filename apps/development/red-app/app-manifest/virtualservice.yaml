@@ -3,6 +3,8 @@ kind: VirtualService
 metadata:
   name: red
   namespace: red
+  annotations:
+    flux.weave.works/automated: "true"
 spec:
   awsName: red.santosoc.hosted.local
   provider:
@@ -15,6 +17,8 @@ kind: VirtualRouter
 metadata:
   name: red-router
   namespace: red
+  annotations:
+    flux.weave.works/automated: "true"
 spec:
   listeners:
     - portMapping:
@@ -36,6 +40,8 @@ kind: VirtualNode
 metadata:
   name: red
   namespace: red
+  annotations:
+    flux.weave.works/automated: "true"
 spec:
   podSelector:
     matchLabels:

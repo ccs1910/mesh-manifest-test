@@ -5,6 +5,8 @@ metadata:
   labels:
     app: red
   namespace: red
+  annotations:
+    flux.weave.works/automated: "true"
 spec:
   replicas: 1
   minReadySeconds: 3

@@ -4,6 +4,8 @@ kind: GatewayRoute
 metadata:
   name: gateway-route-red
   namespace: red
+  annotations:
+    flux.weave.works/automated: "true"
 spec:
   httpRoute:
     match:

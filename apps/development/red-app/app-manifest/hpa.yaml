@@ -3,6 +3,8 @@ kind: HorizontalPodAutoscaler
 metadata:
   name: red
   namespace: red
+  annotations:
+    flux.weave.works/automated: "true"
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
