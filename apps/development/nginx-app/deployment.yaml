@@ -31,22 +31,22 @@ spec:
           requiredDuringSchedulingIgnoredDuringExecution:
             nodeSelectorTerms:
               - matchExpressions:
-                  - key: alpha.eksctl.io/nodegroup-name
+                  - key: family
                     operator: In
                     values:
-                    - ng-consul-outposts
+                    - frontend
           preferredDuringSchedulingIgnoredDuringExecution:
-          - weight: 50
+          - weight: 1
             preference:
               matchExpressions:
-                - key: alpha.eksctl.io/nodegroup-name
+                - key: resource
                   operator: In
                   values:
-                  - ng-consul-frontend
-          - weight: 50
-            preference:
-              matchExpressions:
-                - key: alpha.eksctl.io/nodegroup-name
-                  operator: In
-                  values:
-                  - ng-consul-outposts
+                  - outposts
+          # - weight: 50
+          #   preference:
+          #     matchExpressions:
+          #       - key: alpha.eksctl.io/nodegroup-name
+          #         operator: In
+          #         values:
+          #         - ng-consul-outposts
