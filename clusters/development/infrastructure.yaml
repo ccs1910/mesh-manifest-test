@@ -21,6 +21,10 @@ spec:
       kind: Deployment
       name: appmesh-controller
       namespace: appmesh-system
+    - apiVersion: apps/v1
+      kind: DaemonSet
+      name: cloudwatch-agent
+      namespace: amazon-cloudwatch
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
 kind: Kustomization
