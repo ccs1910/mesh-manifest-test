@@ -42,6 +42,25 @@ spec:
           requests:
             cpu: "100m"
             memory: "128Mi"
+      affinity:
+        podAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: alpha.eksctl.io/nodegroup-name
+                operator: In
+                values:
+                - ng-consul-outposts
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 50
+              preference:
+                matchExpressions:
+                - key: alpha.eksctl.io/nodegroup-name
+                  operator: In
+                  values:
+                  - ng-consul-frontend
+
+
       # nodeSelector:
         # eks.amazonaws.com/nodegroup: linux2
       # affinity: {}
