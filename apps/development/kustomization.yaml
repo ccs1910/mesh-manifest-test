@@ -3,4 +3,4 @@ kind: Kustomization
 resources:
   - nginx-app
   # - blue-app
-  # - red-app
+  - red-app
