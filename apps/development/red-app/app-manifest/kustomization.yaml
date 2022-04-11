@@ -3,7 +3,7 @@ kind: Kustomization
 resources:
   - virtualservice.yaml
   # - gateway-route.yaml
-  - deployment.yaml
+  # - deployment.yaml
 images:
   - name: 450360193046.dkr.ecr.us-west-2.amazonaws.com/santosoc-red
     newName: 450360193046.dkr.ecr.us-west-2.amazonaws.com/santosoc-red
