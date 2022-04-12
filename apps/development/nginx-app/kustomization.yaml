@@ -5,4 +5,4 @@ resources:
   - virtualservice.yaml
   - namespace.yaml
   - gateway-route.yaml
-  - securitygrouppolicy.yaml
+  # - securitygrouppolicy.yaml
