@@ -4,6 +4,7 @@ resources:
   - virtualservice.yaml
   - deployment.yaml
   - gateway-route.yaml
+  - securitygrouppolicy.yaml
   
 images:
   - name: 450360193046.dkr.ecr.us-west-2.amazonaws.com/santosoc-red

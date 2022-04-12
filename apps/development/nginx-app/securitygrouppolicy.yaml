@@ -1,0 +1,12 @@
+apiVersion: vpcresources.k8s.aws/v1beta1
+kind: SecurityGroupPolicy
+metadata:
+  name: securitygroup-nginx
+  namespace: nginx
+spec:
+  podSelector: 
+    matchLabels:
+      role: nginx-role
+  securityGroups:
+    groupIds:
+      - sg-02b4605ed2124eb54

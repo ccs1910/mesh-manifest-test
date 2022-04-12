@@ -19,6 +19,7 @@ spec:
     metadata:
       labels:
         app: nginx-app
+        role: nginx-role
     spec:
       containers:
       - image: public.ecr.aws/nginx/nginx:1.21

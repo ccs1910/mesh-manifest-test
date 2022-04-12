@@ -1,0 +1,12 @@
+apiVersion: vpcresources.k8s.aws/v1beta1
+kind: SecurityGroupPolicy
+metadata:
+  name: securitygroup-red
+  namespace: red
+spec:
+  podSelector: 
+    matchLabels:
+      role: red-role
+  securityGroups:
+    groupIds:
+      - sg-0ee801c462543a2bd
