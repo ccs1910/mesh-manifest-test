@@ -32,18 +32,18 @@ spec:
           requiredDuringSchedulingIgnoredDuringExecution:
             nodeSelectorTerms:
             - matchExpressions:
-              - key: alpha.eksctl.io/nodegroup-name
+              - key: family
                 operator: In
                 values:
-                - ng-consul-outposts
+                - frontend
           preferredDuringSchedulingIgnoredDuringExecution:
-            - weight: 50
+            - weight: 1
               preference:
                 matchExpressions:
-                - key: alpha.eksctl.io/nodegroup-name
+                - key: resource
                   operator: In
                   values:
-                  - ng-consul-frontend
+                  - outposts
       containers:
       - name: red 
         image: 450360193046.dkr.ecr.us-west-2.amazonaws.com/santosoc-red:1.0
