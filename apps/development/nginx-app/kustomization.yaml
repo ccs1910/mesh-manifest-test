@@ -1,8 +1,12 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - deployment.yaml
+  # - deployment.yaml
   - virtualservice.yaml
   - namespace.yaml
   - gateway-route.yaml
-  - securitygrouppolicy.yaml
+  # - securitygrouppolicy.yaml
+
+
+
+  Failed to create pod sandbox: rpc error: code = Unknown desc = failed to set up sandbox container "6d79deed982a993182a776dc6327bd857a6991811ff0050519d0b8b3ab0d9036" network for pod "red-6476468dcc-bmd58": networkPlugin cni failed to set up pod "red-6476468dcc-bmd58_red" network: add cmd: failed to assign an IP address to container
